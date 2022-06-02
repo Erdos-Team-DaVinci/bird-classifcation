@@ -2,9 +2,9 @@
 This project was developed as a part of the [Erdos Institute Data Science Bootcamp 2022](https://www.erdosinstitute.org/code).
 
 ### Team Members:
-- [Soumen Deb]()
-- [Adam Kawash]()
-- [Allison Londeree]()
+- [Soumen Deb](https://www.linkedin.com/in/soumen-deb-193005b0/)
+- [Adam Kawash](https://www.linkedin.com/in/adam-kawash-90077b215/)
+- [Allison Londeree](https://www.linkedin.com/in/allison-londeree/)
 - [Moeka Ono](https://www.linkedin.com/in/moeka-ono/)
 
 ## Summary
