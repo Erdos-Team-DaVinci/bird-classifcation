@@ -1,5 +1,11 @@
 # bird-classifcation
+This project was developed as a part of the [Erdos Institute Data Science Bootcamp 2022](https://www.erdosinstitute.org/code).
 
+### Team Members:
+- [Soumen Deb]()
+- [Adam Kawash]()
+- [Allison Londeree]()
+- [Moeka Ono](https://www.linkedin.com/in/moeka-ono/)
 
 ## Summary
 
@@ -10,3 +16,7 @@ In our project, we focused on the bird species that have been found in [North Am
 
 
 ![](imgs/NA93_count.png)
+
+## Methodology
+
+## Results
