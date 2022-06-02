@@ -15,7 +15,7 @@ from resnet_model import ResnetModel
 
 
 @st.cache()
-def load_model(path: str = 'models/trained_model_resnet50.pt') -> ResnetModel:
+def load_model(path: str = '../models/trained_model_resnet50.pt') -> ResnetModel:
     """Retrieves the trained model and maps it to the CPU by default,
     can also specify GPU here."""
     model = ResnetModel(path_to_pretrained_model=path)
@@ -24,7 +24,7 @@ def load_model(path: str = 'models/trained_model_resnet50.pt') -> ResnetModel:
 
 @st.cache()
 def load_index_to_label_dict(
-        path: str = 'src/index_to_class_label.json'
+        path: str = '../src/index_to_class_label.json'
         ) -> dict:
     """Retrieves and formats the
     index to class label
@@ -55,7 +55,7 @@ def load_files_from_s3(
 
 
 @st.cache()
-def load_s3_file_structure(path: str = 'src/all_image_files.json') -> dict:
+def load_s3_file_structure(path: str = '../src/all_image_files.json') -> dict:
     """Retrieves JSON document outining the S3 file structure"""
     with open(path, 'r') as f:
         return json.load(f)
@@ -104,12 +104,12 @@ if __name__ == '__main__':
     types_of_birds = sorted(list(all_image_files['test'].keys()))
     types_of_birds = [bird.title() for bird in types_of_birds]
 
-    st.title('Welcome To Project Eagle Vision!')
+    st.title('East Coast Bird Classification')
     instructions = """
-        Either upload your own image or select from
-        the sidebar to get a preconfigured image.
-        The image you select or upload will be fed
-        through the Deep Neural Network in real-time
+        Select from the sidebar to get select an image taken by an amateur photographer 
+        (PC. Isaac Ahuvia).
+        The image you select will be fed
+        through the network of your choice in real-time
         and the output will be displayed to the screen.
         """
     st.write(instructions)
