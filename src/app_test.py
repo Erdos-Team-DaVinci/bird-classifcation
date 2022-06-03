@@ -43,6 +43,9 @@ instructions = """
     The image you select will be fed
     through the network of your choice in real-time
     and the output will be displayed to the screen.
+
+    Note that none of the images availible for selection have been seen 
+    by the model before.
     """
 st.write(instructions)
 
