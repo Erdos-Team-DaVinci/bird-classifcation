@@ -21,9 +21,9 @@ def load_list_of_images_available(
     return list_of_files
 
 @st.cache()
-def load_image_file_structure(path: str = 'demo_image_list.json') -> dict:
+def load_image_file_structure(path: str = './demo_image_list.json') -> dict:
     """Retrieves JSON document outining the image directory structure"""
-    with open(path, 'r') as f:
+    with open(os.path.join(os.path.dirname(__file__), path), 'r') as f:
         return json.load(f)
 
 
