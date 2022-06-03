@@ -19,7 +19,7 @@ In our project, we focused on the North American bird. We scraped a list of 3515
 
 In addition, we created an independent dataset of 22 bird species with 1-3 images per species, photographed by an amateur photographer, Isaac Ahuvia, in the east coast. The images were minimally preprocessed. All images were cropped in relation to the center of the image and resampled to our desired size of 224 x 224 pixels. Images were cropped manually such that the bird consumed approximately 50% or more of the image, and resampled to our desired size. An example of the preprocession is as below:
 
-![](img/preprocess_ex.jpg)
+![](imgs/RUBY THROATED HUMMINGBIRD.jpg)
 
 
 ## Methodology
