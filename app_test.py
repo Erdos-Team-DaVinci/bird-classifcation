@@ -21,7 +21,7 @@ def load_list_of_images_available(
     return list_of_files
 
 @st.cache()
-def load_image_file_structure(path: str = '../src/demo_image_list.json') -> dict:
+def load_image_file_structure(path: str = './demo_image_list.json') -> dict:
     """Retrieves JSON document outining the image directory structure"""
     with open(path, 'r') as f:
         return json.load(f)
@@ -34,7 +34,7 @@ all_image_paths = glob.glob("./demo_img/*/*/*")
 types_of_birds = sorted(list(all_image_files['clean_demo_22'].keys()))
 types_of_birds = [bird.title() for bird in types_of_birds]
 
-model_path='convNetvgg16_100species.h5'
+model_path='convNetvgg16_AugFT100.h5'
 
 st.title('North American Bird Classification')
 instructions = """
@@ -70,9 +70,10 @@ if upload:
     model = tf.keras.models.load_model(model_path)
     x = cv2.resize(opencv_image,(224,224))
     x = np.expand_dims(x,axis=0)  
-    x = x.reshape(-1,7*7*512)  
+    #x = x.reshape(-1,244,224,3)
     y = model.predict(x)
     ans=np.argmax(y,axis=1)
+    st.title(ans)
 
     st.title("Here are the five most likely bird species")
     df = pd.DataFrame(data=np.zeros((5, 2)),
@@ -99,9 +100,10 @@ else:
     model = tf.keras.models.load_model(model_path)
     x = cv2.resize(np.float32(image_from_existing_demo),(224,224))
     x = np.expand_dims(x,axis=0)  
-    x = x.reshape(-1,7*7*512)  
+    #x = x.reshape(-1,244,224,3)
     y = model.predict(x)
     ans=np.argmax(y,axis=1)
+    st.title(ans)
 
     
     st.title("Here are the five most likely bird species")
@@ -109,6 +111,8 @@ else:
                   columns=['Species', 'Confidence Level'],
                   index=np.linspace(1, 5, 5, dtype=int))
     st.write(df.to_html(escape=False), unsafe_allow_html=True)
+
+
 
 
 
