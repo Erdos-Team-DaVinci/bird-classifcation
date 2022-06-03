@@ -97,7 +97,7 @@ else:
     st.image(image_from_existing_demo,caption='Selected Image',width=300)
 
     #if(st.button('Predict')):
-    model = tf.keras.models.load_model(model_path)
+    model = tf.keras.models.load_model(os.path.join(os.path.dirname(__file__), model_path))
     x = cv2.resize(np.float32(image_from_existing_demo),(224,224))
     x = np.expand_dims(x,axis=0)  
     #x = x.reshape(-1,244,224,3)
