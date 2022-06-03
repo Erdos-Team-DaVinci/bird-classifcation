@@ -21,7 +21,7 @@ def load_list_of_images_available(
     return list_of_files
 
 @st.cache()
-def load_image_file_structure(path: str = './demo_image_list.json') -> dict:
+def load_image_file_structure(path: str = 'demo_image_list.json') -> dict:
     """Retrieves JSON document outining the image directory structure"""
     with open(path, 'r') as f:
         return json.load(f)
@@ -30,7 +30,7 @@ def load_image_file_structure(path: str = './demo_image_list.json') -> dict:
 
 #index_to_class_label_dict = load_index_to_label_dict()
 all_image_files = load_image_file_structure()
-all_image_paths = glob.glob("./demo_img/*/*/*")
+all_image_paths = glob.glob("demo_img/*/*/*")
 types_of_birds = sorted(list(all_image_files['clean_demo_22'].keys()))
 types_of_birds = [bird.title() for bird in types_of_birds]
 
