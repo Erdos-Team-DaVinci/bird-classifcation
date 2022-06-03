@@ -34,7 +34,7 @@ all_image_paths = glob.glob("./demo_img/*/*/*")
 types_of_birds = sorted(list(all_image_files['clean_demo_22'].keys()))
 types_of_birds = [bird.title() for bird in types_of_birds]
 
-model_path='convNetvgg16_AugFT100.h5'
+model_path='../convNetvgg16_AugFT100.h5'
 
 st.title('North American Bird Classification')
 instructions = """
