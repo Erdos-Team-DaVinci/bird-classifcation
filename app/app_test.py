@@ -91,7 +91,7 @@ else:
         all_image_files, image_files_subset, selected_species.upper())
     image_name = st.sidebar.selectbox("Image Name", available_images)
 
-    demo_img_path = os.path.join('./demo_img/',image_files_subset, selected_species.upper(), image_name)
+    demo_img_path = os.path.join(os.path.dirname(__file__), './demo_img/',image_files_subset, selected_species.upper(), image_name)
 
     image_from_existing_demo = Image.open(demo_img_path)
     st.image(image_from_existing_demo,caption='Selected Image',width=300)
