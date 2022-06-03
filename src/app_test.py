@@ -1,14 +1,11 @@
 import json
 import glob
-
-#from io import BytesIO
 import os
-
 import streamlit as st
 import tensorflow as tf
 import numpy as np
 import pandas as pd
-from PIL import Image # Strreamlit works with PIL library very easily for Images
+from PIL import Image
 import cv2
 
 
