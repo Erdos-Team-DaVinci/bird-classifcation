@@ -35,7 +35,7 @@ types_of_birds = sorted(list(all_image_files['clean_demo_22'].keys()))
 types_of_birds = [bird.title() for bird in types_of_birds]
 
 model_path='../convNetvgg16_AugFT100.h5'
-labelsDF = pandas.read_csv('labelsDF.csv')
+labelsDF = pd.read_csv('labelsDF.csv')
 st.title('North American Bird Classification')
 instructions = """
     Upload an image of a north american bird species or select from the 
