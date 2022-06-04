@@ -41,7 +41,7 @@ model_path='./convNetvgg16_AugFT100NYa.h5'
 st.title('New York Bird Classification')
 instructions = """
     Upload an image of a bird species found in New York State OR select from the 
-    sidebar to get pick an image taken by an amateur photographer. 
+    sidebar to get pick an image taken by an amateur photographer, or from our Kaggle testing set. 
 
     The image you select will be fed
     through the network of your choice in real-time
@@ -61,6 +61,7 @@ dtype_file_structure_mapping = {
         'Raw Images': 'raw_demo_22',
         'Images From Testing Set':'test_22'
          }
+
 data_split_names = list(dtype_file_structure_mapping.keys())
 
 if upload:
@@ -137,7 +138,13 @@ else:
 
 
 
+Credits = """
+    A special thanks to Isaac Ahuvia for providing demonstration images.
 
+    Test images were taken from (Kaggle)[https://www.kaggle.com/datasets/gpiosenka/100-bird-species?resource=download].
+    """
+
+st.write(Credits)
 
 
 
