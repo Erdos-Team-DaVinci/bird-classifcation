@@ -14,7 +14,7 @@ The Davinci Team of the [Erdős Institute Data Science Bootcamp 2022](https://ww
 
 
 ## Dataset
-### Original dataset
+### Original Dataset
 The dataset used for this project can be found on [Kaggle](https://www.kaggle.com/datasets/gpiosenka/100-bird-species). The original dataset "Birds 400" includes 400 bird species with 58,388 training images, 2,000 test images, and 2000 validation images. All images are 224 X 224 X 3 color images in jpg format. Each image contains only one bird and the bird typically takes up at least 50% of the pixels in the image. 
 
 
@@ -26,17 +26,17 @@ In our project, we focused on the species can be found in NY. By cross-referenci
 
 ![download](https://user-images.githubusercontent.com/90373346/171978402-7e27502d-81ec-4cb0-a431-84a57647619b.png)
 
-### Demo dataset
+### Demo Dataset
 We created an independent dataset of 22 bird species with 1-3 images per species, photographed by an amateur photographer, Isaac Ahuvia, in the east coast. The images were minimally preprocessed in 2 ways. 1) All images were cropped in relation to the center of the image and resampled to our desired size of 224 x 224 pixels. 2) Images were cropped manually such that the bird consumed approximately 50% or more of the image, and resampled to our desired size. An example of the preprocession is as below:
 
 ![RUBY THROATED HUMMINGBIRD](https://user-images.githubusercontent.com/90373346/171991573-f5b31a99-1e62-4639-a631-040c44b6b15f.jpg)
 
 
 
-## Methodology
-We combined the original training and validation data images, then splited the dataset into 15% validation, 85% training. We trained the 2 following models.
+## Training and Model Selection
+We combined the original training and validation data images, then splited the dataset into 15% validation and 85% training. We used 2 convolutional neural network (CNN) models: custom CNN model and VGG16.
 
-### 1. Custom convolutional neural network
+### Custom CNN
 As our baseline model, we deployed a simple convolutional neural network (CNN). The following is the simple architecture:
 1. 3 sets of a convolutional layer with window size 2x2 and a pooling layer with window size 2x2
 2. An additional convolutional layer with window size 2x2
@@ -47,9 +47,9 @@ As our baseline model, we deployed a simple convolutional neural network (CNN). 
 
 We used ReLU activation functions in all convolutional layers and 2 fully connected dense layers, as well as L2 regulation to these dense layers. Softmax was applied in the output layer. We ran the network of xxx epochs to see the training and validation accuracies. 
 
-### 2. VGG-16
+### VGG-16
 
-VGG-16 contains 13 convolutional layers, 5 Max Pooling layers, and 3 Dense layers over 6 blocks. The simple architecture is as follows:
+VGG-16 contains 13 convolutional layers, 5 Max Pooling layers, and 3 Dense layers over 6 blocks. 
 
 
 
@@ -63,7 +63,7 @@ We develoyed our VGG-16 model in a prototype app [*ChickID*](https://share.strea
 
 ![]
 
-## Future directions
+## Future Directions
 There are some of our ideas to improve this project.
 ### 1. Model improvement 
 - Our models may predict poorly with the user uploaded images with obstacles. When we tarin less cleaned data, the predictions may improve.
