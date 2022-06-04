@@ -72,18 +72,20 @@ if upload:
     model = tf.keras.models.load_model(model_path)
     x = cv2.resize(opencv_image,(224,224))
     x = np.expand_dims(x,axis=0)  
-    #x = x.reshape(-1,244,224,3)
     y = model.predict(x)
     ans=np.argmax(y,axis=1)
-    st.write('Predicted Bird:', str(labelsDF.loc[labelsDF['label_index'] == y.argmax(), 'labels'].values[0]))
-
-
 
     st.title("Here are the five most likely bird species")
-    df = pd.DataFrame(data=np.zeros((5, 2)),
-                      columns=['Species', 'Confidence Level'],
-                      index=np.linspace(1, 5, 5, dtype=int))
-    st.write(df.to_html(escape=False), unsafe_allow_html=True)
+    st.write('Predicted Bird 1:', str(labelsDF.loc[labelsDF['label_index'] == y.argmax(), 'labels'].values[0]))
+    st.write('Predicted Bird 2:', str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-2], 'labels'].values[0]))
+    st.write('Predicted Bird 3:', str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-3], 'labels'].values[0]))
+    st.write('Predicted Bird 3:', str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-4], 'labels'].values[0]))
+    st.write('Predicted Bird 3:', str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-5], 'labels'].values[0]))
+    
+    #df = pd.DataFrame(data=np.zeros((5, 2)),
+    #                  columns=['Species', 'Confidence Level'],
+    #                  index=np.linspace(1, 5, 5, dtype=int))
+    #st.write(df.to_html(escape=False), unsafe_allow_html=True)
 
 else:
     dataset_type = st.sidebar.selectbox(
@@ -104,18 +106,22 @@ else:
     model = tf.keras.models.load_model(os.path.join(os.path.dirname(__file__), model_path))
     x = cv2.resize(np.float32(image_from_existing_demo),(224,224))
     x = np.expand_dims(x,axis=0)  
-    #x = x.reshape(-1,244,224,3)
     y = model.predict(x)
     ans=np.argmax(y,axis=1)
-    st.write()
-    st.write('Predicted Bird:', str(labelsDF.loc[labelsDF['label_index'] == y.argmax(), 'labels'].values[0]))
-
     
     st.title("Here are the five most likely bird species")
-    df = pd.DataFrame(data=np.zeros((5, 2)),
-                  columns=['Species', 'Confidence Level'],
-                  index=np.linspace(1, 5, 5, dtype=int))
-    st.write(df.to_html(escape=False), unsafe_allow_html=True)
+    st.write('Predicted Bird 1:', str(labelsDF.loc[labelsDF['label_index'] == y.argmax(), 'labels'].values[0]))
+    st.write('Predicted Bird 2:', str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-2], 'labels'].values[0]))
+    st.write('Predicted Bird 3:', str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-3], 'labels'].values[0]))
+    st.write('Predicted Bird 3:', str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-4], 'labels'].values[0]))
+    st.write('Predicted Bird 3:', str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-5], 'labels'].values[0]))
+
+
+    
+    #df = pd.DataFrame(data=np.zeros((5, 2)),
+    #              columns=['Species', 'Confidence Level'],
+    #              index=np.linspace(1, 5, 5, dtype=int))
+    #st.write(df.to_html(escape=False), unsafe_allow_html=True)
 
 
 
