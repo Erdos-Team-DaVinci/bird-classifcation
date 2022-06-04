@@ -1,5 +1,5 @@
 # Bird Species Classification
-The Davinci Team of the [Erdős Institute Data Science Bootcamp 2022](https://www.erdosinstitute.org/code) has utilized advances in computer vision technology with the goal to train a machine learning model to classify species of birds. In doing so our project addresses two primary goals:
+The Davinci Team of the [Erdős Institute Data Science Bootcamp 2022](https://www.erdosinstitute.org/code) has utilized Deep Convolutional Neural network with the goal to train a machine learning application to classify species of birds based on images. In doing so our project addresses two primary goals:
 1. Generate an algorithm that could take images of birds to identify the species.
 2. Ensure our model could function even using amateur-level images with a high degree of accuracy, to ensure accessibility of identification.
 
@@ -12,15 +12,16 @@ The Davinci Team of the [Erdős Institute Data Science Bootcamp 2022](https://ww
 
 ## Summary
 
+
 ## Dataset
 ### Original dataset
-The dataset used for this project can be found on [Kaggle](https://www.kaggle.com/datasets/gpiosenka/100-bird-species). The original dataset "Birds 400" includes 400 bird species with 58388 training images, 2000 test images, and 2000 validation images. All images are 224 X 224 X 3 color images in jpg format. Each image contains only one bird and the bird typically takes up at least 50% of the pixels in the image. 
+The dataset used for this project can be found on [Kaggle](https://www.kaggle.com/datasets/gpiosenka/100-bird-species). The original dataset "Birds 400" includes 400 bird species with 58,388 training images, 2,000 test images, and 2000 validation images. All images are 224 X 224 X 3 color images in jpg format. Each image contains only one bird and the bird typically takes up at least 50% of the pixels in the image. 
 
 
 ![random_pics](https://user-images.githubusercontent.com/90373346/171992600-dbc8619b-2b11-44c6-97f0-3a05628a4816.jpg)
 
 
-In our project, we focused on the species can be found in NY. By cross-referencing the information from [Wikipedia](https://en.wikipedia.org/wiki/List_of_birds_of_New_York_(state)) and Kaggle (as of 6/3/2022), we created a dataset of images of 100 bird species from the original dataset to explore optimal algorithms to classify the selected species. The training dataset of the 100 species had 120-249 images (avg: 149 images) per species and the total of 14,940 images. Both validation and test data included 5 images per species. 
+In our project, we focused on the species can be found in NY. By cross-referencing the information from [Wikipedia](https://en.wikipedia.org/wiki/List_of_birds_of_New_York_(state)) and Kaggle (as of 6/3/2022), we created a dataset of images of 100 bird species from the original dataset to explore optimal algorithms to classify the selected species. The training dataset of the 100 species had 120-249 images (avg: 149 images) per species and the total of 14,940 images. Both validation and test data included 5 images per species. Here are 6 randomly selected training images:
 
 
 ![download](https://user-images.githubusercontent.com/90373346/171978402-7e27502d-81ec-4cb0-a431-84a57647619b.png)
@@ -48,7 +49,7 @@ We used ReLU activation functions in all convolutional layers and 2 fully connec
 
 ### 2. VGG-16
 
-The simple architecture is as follows:
+VGG-16 contains 13 convolutional layers, 5 Max Pooling layers, and 3 Dense layers over 6 blocks. The simple architecture is as follows:
 
 
 
@@ -56,13 +57,17 @@ The simple architecture is as follows:
 We compared the model performances of 3 models. 
 
 ## Web Application
-We develoyed our VGG-16 model on [a web app](https://share.streamlit.io/erdos-team-davinci/bird-classifcation/main/app/app_test.py) via Stlearmlit. This web app can provide the 5 most likely bird species of unseen model-naive images photographed by an amatuer photographer in the east coast, as well as the user uploaded images. 
+![chickid_logo](https://user-images.githubusercontent.com/90373346/172003264-b1015d19-24bf-4304-a24a-7e4935ae61e6.jpeg)
+
+We develoyed our VGG-16 model in a prototype app [*ChickID*](https://share.streamlit.io/erdos-team-davinci/bird-classifcation/main/app/app_test.py) via Stlearmlit. This web app can provide the 5 most likely bird species of unseen model-naive images photographed by an amatuer photographer in the east coast, as well as the user uploaded images. 
 
 ![]
 
-## Future works
-There are some of our future productionisation ideas.
+## Future directions
+There are some of our ideas to improve this project.
 ### 1. Model improvement 
-Due to the time and resource constrains, we were not able to train the species out of NY. We would love to work on models that can predict broader areas on national or continental scales. 
+- Our models may predict poorly with the user uploaded images with obstacles. When we tarin less cleaned data, the predictions may improve.
+- Currently, we can only predict species in our trained dataset. We hope to implement a function that outputs not included in a list when predicted confidence is under a given threshold.  
+- Due to the time and resource constrains, we were not able to train the species out of NY. We would love to expand our training set to national or continental scales. 
 
 ### 2. 
