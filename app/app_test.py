@@ -35,7 +35,7 @@ types_of_birds = sorted(list(all_image_files['clean_demo_22'].keys()))
 types_of_birds = [bird.title() for bird in types_of_birds]
 labelsDF = pd.read_csv(os.path.join(os.path.dirname(__file__), 'labelsDF.csv'))
 
-model_path='../convNetvgg16_AugFT100NYa.h5'
+model_path='./convNetvgg16_AugFT100NYa.h5'
 
 
 st.title('New York Bird Classification')
@@ -76,22 +76,23 @@ if upload:
     y = model.predict(x)
     ans=np.argmax(y,axis=1)
 
-    st.title("Here are the five most likely bird species")
-    st.write('Predicted Bird 1:', 
-      str(labelsDF.loc[labelsDF['label_index'] == y.argmax(), 'labels'].values[0]),
+    #st.title("Here are the five most likely bird species")
+    st.write('Top Predicted Bird:', 
+      str(labelsDF.loc[labelsDF['label_index'] == y.argmax(), 'labels'].values[0]), 
+      'Probability:',
       "{:.3%}".format((y.max())))
-    st.write('Predicted Bird 2:', 
-      str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-2], 'labels'].values[0]),
-      "{:.3%}".format(np.sort(np.max(y, axis=0))[-2]))
-    st.write('Predicted Bird 3:', 
-      str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-3], 'labels'].values[0]),
-      "{:.3%}".format(np.sort(np.max(y, axis=0))[-3]))
-    st.write('Predicted Bird 4:', 
-      str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-4], 'labels'].values[0]),
-      "{:.3%}".format(np.sort(np.max(y, axis=0))[-4]))
-    st.write('Predicted Bird 5:', 
-      str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-5], 'labels'].values[0]),
-      "{:.3%}".format(np.sort(np.max(y, axis=0))[-5]))
+    #st.write('Predicted Bird 2:', 
+    #  str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-2], 'labels'].values[0]),
+    #  "{:.3%}".format(np.sort(np.max(y, axis=0))[-2]))
+    #st.write('Predicted Bird 3:', 
+    #  str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-3], 'labels'].values[0]),
+    #  "{:.3%}".format(np.sort(np.max(y, axis=0))[-3]))
+    #st.write('Predicted Bird 4:', 
+    #  str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-4], 'labels'].values[0]),
+    #  "{:.3%}".format(np.sort(np.max(y, axis=0))[-4]))
+    #st.write('Predicted Bird 5:', 
+    #  str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-5], 'labels'].values[0]),
+    #  "{:.3%}".format(np.sort(np.max(y, axis=0))[-5]))
 
 else:
     dataset_type = st.sidebar.selectbox(
@@ -115,22 +116,23 @@ else:
     y = model.predict(x)
     ans=np.argmax(y,axis=1)
     
-    st.title("Here are the five most likely bird species")
-    st.write('Predicted Bird 1:', 
-      str(labelsDF.loc[labelsDF['label_index'] == y.argmax(), 'labels'].values[0]),
+    #st.title("Here are the five most likely bird species")
+    st.write('Top Predicted Bird:', 
+      str(labelsDF.loc[labelsDF['label_index'] == y.argmax(), 'labels'].values[0]), 
+      'Probability:',
       "{:.3%}".format((y.max())))
-    st.write('Predicted Bird 2:', 
-      str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-2], 'labels'].values[0]),
-      "{:.3%}".format(np.sort(np.max(y, axis=0))[-2]))
-    st.write('Predicted Bird 3:', 
-      str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-3], 'labels'].values[0]),
-      "{:.3%}".format(np.sort(np.max(y, axis=0))[-3]))
-    st.write('Predicted Bird 4:', 
-      str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-4], 'labels'].values[0]),
-      "{:.3%}".format(np.sort(np.max(y, axis=0))[-4]))
-    st.write('Predicted Bird 5:', 
-      str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-5], 'labels'].values[0]),
-      "{:.3%}".format(np.sort(np.max(y, axis=0))[-5]))
+    #st.write('Predicted Bird 2:', 
+    #  str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-2], 'labels'].values[0]),
+    #  "{:.3%}".format(np.sort(np.max(y, axis=0))[-2]))
+    #st.write('Predicted Bird 3:', 
+    #  str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-3], 'labels'].values[0]),
+    #  "{:.3%}".format(np.sort(np.max(y, axis=0))[-3]))
+    #st.write('Predicted Bird 4:', 
+    #  str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-4], 'labels'].values[0]),
+    #  "{:.3%}".format(np.sort(np.max(y, axis=0))[-4]))
+    #st.write('Predicted Bird 5:', 
+    #  str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-5], 'labels'].values[0]),
+    #  "{:.3%}".format(np.sort(np.max(y, axis=0))[-5]))
 
 
 
