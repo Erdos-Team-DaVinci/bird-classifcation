@@ -58,7 +58,8 @@ upload = st.file_uploader('Upload a north american bird image')
 dtype_file_structure_mapping = {
         'Cleaned Images': 'clean_demo_22',
         'Minimally Preprocessed Images': 'rough_demo_22',
-        'Raw Images': 'raw_demo_22'
+        'Raw Images': 'raw_demo_22',
+        'Images From Testing Set':'test_22'
          }
 data_split_names = list(dtype_file_structure_mapping.keys())
 
