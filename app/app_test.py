@@ -36,8 +36,9 @@ types_of_birds = [bird.title() for bird in types_of_birds]
 labelsDF = pd.read_csv(os.path.join(os.path.dirname(__file__), 'labelsDF.csv'))
 
 model_path='./convNetvgg16_AugFT100NYa.h5'
+logo_path = './logo.png'
 
-st.image('./logo.png')
+st.image(os.path.join(os.path.dirname(__file__), logo_path))
 #st.title("ChickID")
 st.subheader('ChickID - New York Bird Identification')
 instructions = """
