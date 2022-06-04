@@ -35,14 +35,14 @@ types_of_birds = sorted(list(all_image_files['clean_demo_22'].keys()))
 types_of_birds = [bird.title() for bird in types_of_birds]
 labelsDF = pd.read_csv(os.path.join(os.path.dirname(__file__), 'labelsDF.csv'))
 
-model_path='../convNetvgg16_AugFT100NY.h5'
+model_path='../convNetvgg16_AugFT100NYa.h5'
 
 
 st.title('New York Bird Classification')
 instructions = """
     Upload an image of a bird species found in New York State OR select from the 
     sidebar to get pick an image taken by an amateur photographer. 
-    
+
     The image you select will be fed
     through the network of your choice in real-time
     and the output will be displayed to the screen.
@@ -106,7 +106,7 @@ else:
     demo_img_path = os.path.join(os.path.dirname(__file__), './demo_img/',image_files_subset, selected_species.upper(), image_name)
 
     image_from_existing_demo = Image.open(demo_img_path)
-    st.image(image_from_existing_demo,caption='Selected Image',width=300)
+    st.image(image_from_existing_demo,caption=str('Selected Image of ', selected_species),width=300)
 
     #if(st.button('Predict')):
     model = tf.keras.models.load_model(os.path.join(os.path.dirname(__file__), model_path))
