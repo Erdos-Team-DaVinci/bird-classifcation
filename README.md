@@ -10,7 +10,8 @@ The Davinci Team of the [Erdős Institute Data Science Bootcamp 2022](https://ww
 - [Allison Londeree](https://www.linkedin.com/in/allison-londeree/)
 - [Moeka Ono](https://www.linkedin.com/in/moeka-ono/)
 
-## Summary
+## Introduction 
+The diversity of bird species on Earth is immense. With over 11,000 species identified today, it is no wonder many humans, or birders, take keen interest in observing and documenting their locations, but the list of species that are endangered or critically endangered grows as the threats of shifting birds’ breeding and migratory seasons due to climate warming. For these reasons, identifying species of birds is not only a leisure activity for birders, but it is also crucial to protect the diversity of birdlife we know of today.
 
 
 ## Dataset
@@ -18,16 +19,17 @@ The Davinci Team of the [Erdős Institute Data Science Bootcamp 2022](https://ww
 The dataset used for this project can be found on [Kaggle](https://www.kaggle.com/datasets/gpiosenka/100-bird-species). The original dataset "Birds 400" includes 400 bird species with 58,388 training images, 2,000 test images, and 2000 validation images. All images are 224 X 224 X 3 color images in jpg format. Each image contains only one bird and the bird typically takes up at least 50% of the pixels in the image. 
 
 
-![random_pics](https://user-images.githubusercontent.com/90373346/171992600-dbc8619b-2b11-44c6-97f0-3a05628a4816.jpg)
+![rgb](https://user-images.githubusercontent.com/90373346/172022489-a669d05c-2d3d-4f0c-923c-126a3a7adb06.jpg)
 
 
-In our project, we focused on the species can be found in NY. By cross-referencing the information from [Wikipedia](https://en.wikipedia.org/wiki/List_of_birds_of_New_York_(state)) and Kaggle (as of 6/3/2022), we created a dataset of images of 100 bird species from the original dataset to explore optimal algorithms to classify the selected species. The training dataset of the 100 species had 120-249 images (avg: 149 images) per species and the total of 14,940 images. Both validation and test data included 5 images per species. Here are 6 randomly selected training images:
-
+### Our Dataset
+In our project, we focused on the species can be found in NY. By cross-referencing the information from [Wikipedia](https://en.wikipedia.org/wiki/List_of_birds_of_New_York_(state)) and Kaggle (as of 6/3/2022), we created a dataset of images of 100 bird species from the original dataset to explore optimal algorithms to classify the selected species. The training dataset of the 100 species had 120-249 images (avg: 149 images) per species and the total of 14,940 images. Both validation and test data included 5 images per species. 
 
 ![download](https://user-images.githubusercontent.com/90373346/171978402-7e27502d-81ec-4cb0-a431-84a57647619b.png)
 
+
 ### Demo Dataset
-We created an independent dataset of 22 bird species with 1-3 images per species, photographed by an amateur photographer, Isaac Ahuvia, in the east coast. The images were minimally preprocessed in 2 ways. 1) All images were cropped in relation to the center of the image and resampled to our desired size of 224 x 224 pixels. 2) Images were cropped manually such that the bird consumed approximately 50% or more of the image, and resampled to our desired size. An example of the preprocession is as below:
+We created an independent dataset of 22 bird species with 1-3 images per species, photographed by an amateur photographer, Isaac Ahuvia, in Long Island, NY. The images were minimally preprocessed in 2 ways. 1) All images were cropped in relation to the center of the image and resampled to our desired size of 224 x 224 pixels. 2) Images were cropped manually such that the bird consumed approximately 50% or more of the image, and resampled to our desired size. An example of the preprocession is as below:
 
 ![RUBY THROATED HUMMINGBIRD](https://user-images.githubusercontent.com/90373346/171991573-f5b31a99-1e62-4639-a631-040c44b6b15f.jpg)
 
@@ -49,7 +51,7 @@ We used ReLU activation functions in all convolutional layers and 2 fully connec
 
 ### VGG-16
 
-VGG-16 contains 13 convolutional layers, 5 Max Pooling layers, and 3 Dense layers over 6 blocks. 
+VGG-16 contains 13 convolutional layers, 5 Max Pooling layers, and 3 Dense layers over 6 blocks. On the top of that, 
 
 
 
@@ -62,15 +64,19 @@ VGG16 was used as the model for this project to predict the test set. The model 
 
 ![chickid_logo](https://user-images.githubusercontent.com/90373346/172003264-b1015d19-24bf-4304-a24a-7e4935ae61e6.jpeg)
 
-We develoyed our VGG-16 model in a prototype app [*ChickID*](https://share.streamlit.io/erdos-team-davinci/bird-classifcation/main/app/app_test.py) via Stlearmlit. The user can select any of demo images that the model has never seen before, or upload their own images to see how the model would predict it. The output of this web app includes the top 5 species predictions with confidence levels of each predictioin.  
+We develoyed our VGG-16 model in a prototype app [*ChickID*](https://share.streamlit.io/erdos-team-davinci/bird-classifcation/main/app/app_test.py) via Stlearmlit. The user can select any of demo images that the model has never seen before, or upload their own images to see how the model would predict it. The output of this web app includes the top species predictions with a confidence level.  
 
-![]
+
+![RUBY THROATED HUMMINGBIRD_app](https://user-images.githubusercontent.com/90373346/172022336-4511ccf4-57f4-4a29-87fb-1fc3b3b36295.jpg)
 
 ## Future Directions
 There are some of our ideas to improve this project.
-### 1. Model improvement 
-- Our models may predict poorly with the user uploaded images with obstacles. When we tarin less cleaned data, the predictions may improve.
-- Currently, we can only predict species in our trained dataset. We hope to implement a function that outputs not included in a list when predicted confidence is under a given threshold.  
-- Due to the time and resource constrains, we were not able to train the species out of NY. We would love to expand our training set to national or continental scales. 
+### Enhance model preprocessing
+Our models may predict poorly with the user uploaded images without clearly visible features. When we tarin less cleaned data, the predictions may improve.
 
-### 2. 
+### Model improvement
+Male birds typically has brighter, more vivid colors than females. Thus, it is possible for the model to predict the same species but different sexes differently. We would like to train the model to handle sexual dimporphim to improve the issue.    
+### Model expantion
+- Due to the time and resource constrains, we were not able to train the species out of NY. We would love to expand more bird species on national or continental scales.
+- Currently, we can only predict species in our trained dataset. We hope to implement a function that outputs not included in a list when predicted confidence is under a given threshold.   
+
