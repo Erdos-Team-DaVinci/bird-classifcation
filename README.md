@@ -1,4 +1,4 @@
-# bird-classifcation
+# Bird Species Classification
 The Davinci Team of the [Erdős Institute Data Science Bootcamp 2022](https://www.erdosinstitute.org/code) has utilized advances in computer vision technology with the goal to train a machine learning model to classify species of birds. In doing so our project addresses two primary goals:
 1. Generate an algorithm that could take images of birds to identify the species.
 2. Ensure our model could function even using amateur-level images with a high degree of accuracy, to ensure accessibility of identification.
