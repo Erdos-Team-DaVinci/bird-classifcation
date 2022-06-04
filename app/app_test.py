@@ -35,7 +35,7 @@ types_of_birds = sorted(list(all_image_files['clean_demo_22'].keys()))
 types_of_birds = [bird.title() for bird in types_of_birds]
 labelsDF = pd.read_csv(os.path.join(os.path.dirname(__file__), 'labelsDF.csv'))
 
-model_path='../convNetvgg16_AugFT100.h5'
+model_path='../convNetvgg16_AugFT100NY.h5'
 
 
 st.title('North American Bird Classification')
@@ -75,7 +75,9 @@ if upload:
     #x = x.reshape(-1,244,224,3)
     y = model.predict(x)
     ans=np.argmax(y,axis=1)
-    st.title(ans)
+    st.write('Predicted Bird:', str(labelsDF.loc[labelsDF['label_index'] == y.argmax(), 'labels'].values[0]))
+
+
 
     st.title("Here are the five most likely bird species")
     df = pd.DataFrame(data=np.zeros((5, 2)),
@@ -105,8 +107,8 @@ else:
     #x = x.reshape(-1,244,224,3)
     y = model.predict(x)
     ans=np.argmax(y,axis=1)
-    st.title(ans)
-    print('Prdicted Bird:', str(labelsDF.loc[lablesDF['label_index'] == y.argmax(), 'label'].values[0])
+    st.write()
+    st.write('Predicted Bird:', str(labelsDF.loc[labelsDF['label_index'] == y.argmax(), 'labels'].values[0]))
 
     
     st.title("Here are the five most likely bird species")
