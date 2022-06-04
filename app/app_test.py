@@ -37,8 +37,9 @@ labelsDF = pd.read_csv(os.path.join(os.path.dirname(__file__), 'labelsDF.csv'))
 
 model_path='./convNetvgg16_AugFT100NYa.h5'
 
-
-st.title('New York Bird Classification')
+st.image('./logo.png')
+#st.title("ChickID")
+st.subheader('ChickID - New York Bird Identification')
 instructions = """
     Upload an image of a bird species found in New York State OR select from the 
     sidebar to get pick an image taken by an amateur photographer, or from our Kaggle testing set. 
