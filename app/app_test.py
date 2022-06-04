@@ -104,6 +104,7 @@ else:
     y = model.predict(x)
     ans=np.argmax(y,axis=1)
     st.title(ans)
+    print('Prdicted Bird:', str(labelsDF.loc[lablesDF['label_index'] == y.argmax(), 'label'].values[0])
 
     
     st.title("Here are the five most likely bird species")
