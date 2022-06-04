@@ -106,7 +106,7 @@ else:
     demo_img_path = os.path.join(os.path.dirname(__file__), './demo_img/',image_files_subset, selected_species.upper(), image_name)
 
     image_from_existing_demo = Image.open(demo_img_path)
-    st.image(image_from_existing_demo,caption=str('Selected Image of ', selected_species),width=300)
+    st.image(image_from_existing_demo,caption=str(selected_species),width=300)
 
     #if(st.button('Predict')):
     model = tf.keras.models.load_model(os.path.join(os.path.dirname(__file__), model_path))
