@@ -80,9 +80,7 @@ if upload:
 
     #st.title("Here are the five most likely bird species")
     st.write('Top Predicted Bird:', 
-      str(labelsDF.loc[labelsDF['label_index'] == y.argmax(), 'labels'].values[0]), 
-      'Probability:',
-      "{:.3%}".format((y.max())))
+      str(labelsDF.loc[labelsDF['label_index'] == y.argmax(), 'labels'].values[0]))
     #st.write('Predicted Bird 2:', 
     #  str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-2], 'labels'].values[0]),
     #  "{:.3%}".format(np.sort(np.max(y, axis=0))[-2]))
@@ -120,9 +118,7 @@ else:
     
     #st.title("Here are the five most likely bird species")
     st.write('Top Predicted Bird:', 
-      str(labelsDF.loc[labelsDF['label_index'] == y.argmax(), 'labels'].values[0]), 
-      'Probability:',
-      "{:.3%}".format((y.max())))
+      str(labelsDF.loc[labelsDF['label_index'] == y.argmax(), 'labels'].values[0]))
     #st.write('Predicted Bird 2:', 
     #  str(labelsDF.loc[labelsDF['label_index'] == np.argsort(np.max(y, axis=0))[-2], 'labels'].values[0]),
     #  "{:.3%}".format(np.sort(np.max(y, axis=0))[-2]))
