@@ -54,12 +54,15 @@ VGG-16 contains 13 convolutional layers, 5 Max Pooling layers, and 3 Dense layer
 
 
 ## Results
-We compared the model performances of 3 models. 
+VGG16 was used as the model for this project to predict the test set. The model achieved the precision score of 0.81.
+
+![confusion_matrix](https://user-images.githubusercontent.com/90373346/172018515-fac99367-490f-42eb-8060-c7b16f8bc6d8.png)
 
 ## Web Application
+
 ![chickid_logo](https://user-images.githubusercontent.com/90373346/172003264-b1015d19-24bf-4304-a24a-7e4935ae61e6.jpeg)
 
-We develoyed our VGG-16 model in a prototype app [*ChickID*](https://share.streamlit.io/erdos-team-davinci/bird-classifcation/main/app/app_test.py) via Stlearmlit. This web app can provide the 5 most likely bird species of unseen model-naive images photographed by an amatuer photographer in the east coast, as well as the user uploaded images. 
+We develoyed our VGG-16 model in a prototype app [*ChickID*](https://share.streamlit.io/erdos-team-davinci/bird-classifcation/main/app/app_test.py) via Stlearmlit. The user can select any of demo images that the model has never seen before, or upload their own images to see how the model would predict it. The output of this web app includes the top 5 species predictions with confidence levels of each predictioin.  
 
 ![]
 
