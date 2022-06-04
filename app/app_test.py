@@ -139,9 +139,11 @@ else:
 
 
 Credits = """
+    
+
     A special thanks to Isaac Ahuvia for providing demonstration images.
 
-    Test images were taken from (Kaggle)[https://www.kaggle.com/datasets/gpiosenka/100-bird-species?resource=download].
+    Test images were taken from [Kaggle](https://www.kaggle.com/datasets/gpiosenka/100-bird-species?resource=download).
     """
 
 st.write(Credits)
