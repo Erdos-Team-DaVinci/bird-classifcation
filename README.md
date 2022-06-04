@@ -25,8 +25,6 @@ The dataset used for this project can be found on [Kaggle](https://www.kaggle.co
 ### Our Dataset
 In our project, we focused on the species can be found in NY. By cross-referencing the information from [Wikipedia](https://en.wikipedia.org/wiki/List_of_birds_of_New_York_(state)) and Kaggle (as of 6/3/2022), we created a dataset of images of 100 bird species from the original dataset to explore optimal algorithms to classify the selected species. The training dataset of the 100 species had 120-249 images (avg: 149 images) per species and the total of 14,940 images. Both validation and test data included 5 images per species. 
 
-![download](https://user-images.githubusercontent.com/90373346/171978402-7e27502d-81ec-4cb0-a431-84a57647619b.png)
-
 
 ### Demo Dataset
 We created an independent dataset of 22 bird species with 1-3 images per species, photographed by an amateur photographer, Isaac Ahuvia, in Long Island, NY. The images were minimally preprocessed in 2 ways. 1) All images were cropped in relation to the center of the image and resampled to our desired size of 224 x 224 pixels. 2) Images were cropped manually such that the bird consumed approximately 50% or more of the image, and resampled to our desired size. An example of the preprocession is as below:
