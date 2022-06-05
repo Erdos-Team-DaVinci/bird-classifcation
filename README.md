@@ -10,13 +10,16 @@ The Davinci Team of the [Erdős Institute Data Science Bootcamp 2022](https://ww
 - [Allison Londeree](https://www.linkedin.com/in/allison-londeree/)
 - [Moeka Ono](https://www.linkedin.com/in/moeka-ono/)
 
+Our presentation record can be found at [here](https://www.erdosinstitute.org/project-database).
+
+
 ## Introduction 
 The diversity of bird species on Earth is immense. With over 11,000 species identified today, it is no wonder many humans, or birders, take keen interest in observing and documenting their locations, but the list of species that are endangered or critically endangered grows as the threats of shifting birds’ breeding and migratory seasons due to climate warming. For these reasons, identifying species of birds is not only a leisure activity for birders, but it is also crucial to protect the diversity of birdlife we know of today.
 
 
 ## Dataset
 ### Original Dataset
-The dataset used for this project can be found on [Kaggle](https://www.kaggle.com/datasets/gpiosenka/100-bird-species). The original dataset "Birds 400" includes 400 bird species with 58,388 training images, 2,000 test images, and 2000 validation images. All images are 224 X 224 X 3 color images in jpg format. Each image contains only one bird and the bird typically takes up at least 50% of the pixels in the image. 
+The dataset used for this project can be found on [Kaggle](https://www.kaggle.com/datasets/gpiosenka/100-bird-species). The original dataset "Birds 400" includes 400 bird species with 58,388 training images, 2,000 test images, and 2000 validation images. All images are 224 X 224 X 3 color images in jpg format. Each image contains only one bird, typically taking up at least 50% of the pixels in the images.
 
 
 ![rgb](https://user-images.githubusercontent.com/90373346/172022489-a669d05c-2d3d-4f0c-923c-126a3a7adb06.jpg)
@@ -27,7 +30,7 @@ In our project, we focused on the species can be found in NY. By cross-referenci
 
 
 ### Demo Dataset
-We created an independent dataset of 22 bird species with 1-3 images per species, photographed by an amateur photographer, Isaac Ahuvia, in Long Island, NY. The images were minimally preprocessed in 2 ways. 1) All images were cropped in relation to the center of the image and resampled to our desired size of 224 x 224 pixels. 2) Images were cropped manually such that the bird consumed approximately 50% or more of the image, and resampled to our desired size. An example of the preprocession is as below:
+We created an independent dataset of 22 bird species with 1-3 images per species, photographed by an amateur photographer, Isaac Ahuvia, in Long Island, NY. The images were minimally preprocessed in 2 ways: 1) all images were cropped in relation to the center of the image and resampled to our desired size of 224 x 224 pixels, and 2) images were cropped manually such that the bird took up approximately 50% or more of the image, and resampled to our desired size. An example of the preprocessing is as below:
 
 ![RUBY THROATED HUMMINGBIRD](https://user-images.githubusercontent.com/90373346/171991573-f5b31a99-1e62-4639-a631-040c44b6b15f.jpg)
 
@@ -36,25 +39,19 @@ We created an independent dataset of 22 bird species with 1-3 images per species
 ## Training and Model Selection
 We deployed 2 convolutional neural network (CNN) models: custom CNN model and VGG16.
 
-### Custom CNN (NEED TO UPDATE)
-As our baseline model, we deployed a simple convolutional neural network (CNN). The following is the simple architecture:
-1. 3 sets of a convolutional layer with window size 2x2 and a pooling layer with window size 2x2
-2. An additional convolutional layer with window size 2x2
-3. A flattening layer 
-4. A dropout layer of 0.5 to drop inputs randomly to prevent overfitting 
-5. 2 fully connected dense layers
-6. An output dense layer
+### Custom CNN
+We deployed a simple collection of convolutional layers based on two fundamental principles of computer vision: 1. Translational invariance, and 2. Spatial hierarchy. This base model contains 4 convolutional layers, 3 Max Pooling layers, and 2 Dense layers. We used ReLU activation functions in all convolutional layers and 2 fully connected dense layers, as well as L2 regulation to these dense layers. We used softmax for output probabilities. We ran a network of 260 epochs to see the training and validation accuracies. We found our model overfitted likely due to our small dataset. Then, we also used augmented data that ensures the neural network does not see the same image twice during the training, effectively creating an illusion in the model that the training sample is more than it is. This strategy resolved the initial overfitting trend, but the accuracy scores, 76% as maximum, were still not great.
 
-We used ReLU activation functions in all convolutional layers and 2 fully connected dense layers, as well as L2 regulation to these dense layers. Softmax was applied in the output layer. We ran the network of xxx epochs to see the training and validation accuracies. 
+![base_result](https://user-images.githubusercontent.com/90373346/172034366-5a18756b-b3ff-4edd-893e-d1105dc00cde.jpg)
 
-### VGG-16 (NEED TO UPDATE)
+### VGG16
+We also used a pre-trained model, VGG16, from imageNet was trained on 1.4 M images. VGG16 is one of the most popular and highly-performing models, yet easier to interpret. We used transfer learning (i.e., a frozen convolutional base) with a new classifier. We kept the pre-trained weights from the convolutional base of VGG16, except for the last 3 convolutional layers that we fine-tuned with our data. This method worked better for our model, achieving a validation accuracy of 95%.   
 
-VGG-16 contains 13 convolutional layers, 5 Max Pooling layers, and 3 Dense layers over 6 blocks. On the top of that, 
-
+![vgg16_result](https://user-images.githubusercontent.com/90373346/172034664-1afb6699-377b-4a05-b474-bfa582a2d5f5.jpg)
 
 
 ## Results
-VGG16 was used as the model for this project to predict the test set. Our model achieved 80% precision on 5 test images per species.
+To predict the test set, we used the VGG16 model. With fine-tuned VGG models and data augmentation, we achieved 80% test accuracy despite having a small dataset to train. We found progressive improvements with augmentation techniques and transfer learning. 
 
 ![confusion_matrix](https://user-images.githubusercontent.com/90373346/172018515-fac99367-490f-42eb-8060-c7b16f8bc6d8.png)
 
@@ -62,7 +59,7 @@ VGG16 was used as the model for this project to predict the test set. Our model 
 
 ![chickid_logo](https://user-images.githubusercontent.com/90373346/172003264-b1015d19-24bf-4304-a24a-7e4935ae61e6.jpeg)
 
-We develoyed our VGG-16 model in a prototype app [*ChickID*](https://share.streamlit.io/erdos-team-davinci/bird-classifcation/main/app/app_test.py) via Stlearmlit. The user can select any of demo images with different process levels and test images that the model has never trained before, or upload their own images to see how the model would predict it. The output of this web app includes the top species prediction.  
+With our VGG16 model, we developed a user-friendly prototype app [*ChickID*](https://share.streamlit.io/erdos-team-davinci/bird-classifcation/main/app/app_test.py) via Stlearmlit. The user can select any demo images with different preprocess levels and our test image set that the model had never trained or upload their photographs to see how the model would predict it. The output of this web app includes the top species prediction.  
 
 
 ![RUBY THROATED HUMMINGBIRD_app](https://user-images.githubusercontent.com/90373346/172029212-c2b41d81-86ac-4c3f-86b4-432b747966c6.jpg)
@@ -71,11 +68,11 @@ We develoyed our VGG-16 model in a prototype app [*ChickID*](https://share.strea
 ## Future Directions
 There are some of our ideas to improve this project.
 ### Enhance model preprocessing
-Our model performance reduced when we tested with naturalistic images likely due to a lack of clearly visible features. We hope to address this though improved pre-processing.
+Our model performance reduced when we tested with naturalistic images, likely due to a lack of clearly visible features. We hope to address this through improved preprocessing.
 
 ### Model improvement
-There is rich variation between apperance of bird sexes: male birds typically has brighter, more vivid colors than females. Thus, it is possible for the model to predict the same species but different sexes differently. Additional training is needed  as the majority of our training data is on male birds.    
+There is rich variation between the appearance of bird sexes: male birds typically have brighter, more vivid colors than females. Thus, the model can predict the same species but different sexes differently. Additional training is needed as the majority of our training data is on male birds.    
 ### Model expantion
-- Due to the time and resource constrains, we were not able to train the species out of NY. We would love to expand more bird species on national or continental scales.
-- Currently, we can only predict species in our trained dataset. We hope to implement a function that outputs not included in a list when predicted confidence is under a given threshold.   
+- Due to the time and resource constraints, we were not able to train the species out of NY. We would love to expand more bird species on national or continental scales.
+- Currently, we can only predict species in our trained dataset. We hope to implement a function that outputs not included in a list when a predicted confidence is under a given threshold.     
 
