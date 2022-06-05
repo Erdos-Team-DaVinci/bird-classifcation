@@ -23,7 +23,7 @@ The dataset used for this project can be found on [Kaggle](https://www.kaggle.co
 
 
 ### Our Dataset
-In our project, we focused on the species can be found in NY. By cross-referencing the information from [Wikipedia](https://en.wikipedia.org/wiki/List_of_birds_of_New_York_(state)) and Kaggle (as of 6/3/2022), we created a dataset of images of 100 bird species from the original dataset to explore optimal algorithms to classify the selected species. The training dataset of the 100 species had 120-249 images (avg: 149 images) per species and the total of 14,940 images. Both validation and test data included 5 images per species. 
+In our project, we focused on the species can be found in NY. By cross-referencing the scraped information from [Wikipedia](https://en.wikipedia.org/wiki/List_of_birds_of_New_York_(state)) and Kaggle (as of 6/3/2022), we created a dataset of images of 100 bird species from the original dataset to explore optimal algorithms to classify the selected species. The training dataset of the 100 species had 120-249 images (avg: 149 images) per species and the total of 14,940 images. Both validation and test data included 5 images per species. 
 
 
 ### Demo Dataset
@@ -34,9 +34,9 @@ We created an independent dataset of 22 bird species with 1-3 images per species
 
 
 ## Training and Model Selection
-We combined the original training and validation data images, then splited the dataset into 15% validation and 85% training. We used 2 convolutional neural network (CNN) models: custom CNN model and VGG16.
+We deployed 2 convolutional neural network (CNN) models: custom CNN model and VGG16.
 
-### Custom CNN
+### Custom CNN (NEED TO UPDATE)
 As our baseline model, we deployed a simple convolutional neural network (CNN). The following is the simple architecture:
 1. 3 sets of a convolutional layer with window size 2x2 and a pooling layer with window size 2x2
 2. An additional convolutional layer with window size 2x2
@@ -47,14 +47,14 @@ As our baseline model, we deployed a simple convolutional neural network (CNN). 
 
 We used ReLU activation functions in all convolutional layers and 2 fully connected dense layers, as well as L2 regulation to these dense layers. Softmax was applied in the output layer. We ran the network of xxx epochs to see the training and validation accuracies. 
 
-### VGG-16
+### VGG-16 (NEED TO UPDATE)
 
 VGG-16 contains 13 convolutional layers, 5 Max Pooling layers, and 3 Dense layers over 6 blocks. On the top of that, 
 
 
 
 ## Results
-VGG16 was used as the model for this project to predict the test set. The model achieved the precision score of 0.81.
+VGG16 was used as the model for this project to predict the test set. Our model achieved 80% precision on 5 test images per species.
 
 ![confusion_matrix](https://user-images.githubusercontent.com/90373346/172018515-fac99367-490f-42eb-8060-c7b16f8bc6d8.png)
 
@@ -62,18 +62,19 @@ VGG16 was used as the model for this project to predict the test set. The model 
 
 ![chickid_logo](https://user-images.githubusercontent.com/90373346/172003264-b1015d19-24bf-4304-a24a-7e4935ae61e6.jpeg)
 
-We develoyed our VGG-16 model in a prototype app [*ChickID*](https://share.streamlit.io/erdos-team-davinci/bird-classifcation/main/app/app_test.py) via Stlearmlit. The user can select any of demo images that the model has never seen before, or upload their own images to see how the model would predict it. The output of this web app includes the top species predictions with a confidence level.  
+We develoyed our VGG-16 model in a prototype app [*ChickID*](https://share.streamlit.io/erdos-team-davinci/bird-classifcation/main/app/app_test.py) via Stlearmlit. The user can select any of demo images with different process levels and test images that the model has never trained before, or upload their own images to see how the model would predict it. The output of this web app includes the top species prediction.  
 
 
-![RUBY THROATED HUMMINGBIRD_app](https://user-images.githubusercontent.com/90373346/172022336-4511ccf4-57f4-4a29-87fb-1fc3b3b36295.jpg)
+![RUBY THROATED HUMMINGBIRD_app](https://user-images.githubusercontent.com/90373346/172029212-c2b41d81-86ac-4c3f-86b4-432b747966c6.jpg)
+
 
 ## Future Directions
 There are some of our ideas to improve this project.
 ### Enhance model preprocessing
-Our models may predict poorly with the user uploaded images without clearly visible features. When we tarin less cleaned data, the predictions may improve.
+Our model performance reduced when we tested with naturalistic images likely due to a lack of clearly visible features. We hope to address this though improved pre-processing.
 
 ### Model improvement
-Male birds typically has brighter, more vivid colors than females. Thus, it is possible for the model to predict the same species but different sexes differently. We would like to train the model to handle sexual dimporphim to improve the issue.    
+There is rich variation between apperance of bird sexes: male birds typically has brighter, more vivid colors than females. Thus, it is possible for the model to predict the same species but different sexes differently. Additional training is needed  as the majority of our training data is on male birds.    
 ### Model expantion
 - Due to the time and resource constrains, we were not able to train the species out of NY. We would love to expand more bird species on national or continental scales.
 - Currently, we can only predict species in our trained dataset. We hope to implement a function that outputs not included in a list when predicted confidence is under a given threshold.   
